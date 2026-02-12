@@ -117,12 +117,54 @@
                     </transition>
                 </div>
 
-                <!-- Profile -->
-                <div class="flex items-center gap-3">
+                <!-- Profile Dropdown -->
+                <div class="relative flex items-center gap-3">
                     <span class="hidden text-sm text-gray-700 md:block">{{ user.firstName }}</span>
-                    <div class="flex items-center justify-center w-10 h-10 bg-blue-600 rounded-full">
-                        <i class="w-6 text-lg text-center text-white fas fa-user"></i>
-                    </div>
+                    
+                    <!-- Profile Button -->
+                    <button 
+                        ref="profileBtn"
+                        @click="toggleProfile"
+                        class="flex items-center justify-center w-10 h-10 bg-blue-600 rounded-full hover:bg-blue-700 transition-colors"
+                    >
+                        <i class="fas fa-user text-white"></i>
+                    </button>
+                    
+                    <!-- Dropdown Menu -->
+                    <transition
+                        enter-active-class="transition duration-150 ease-out"
+                        enter-from-class="translate-y-1 opacity-0"
+                        enter-to-class="translate-y-0 opacity-100"
+                        leave-active-class="transition duration-100 ease-in"
+                        leave-from-class="translate-y-0 opacity-100"
+                        leave-to-class="translate-y-1 opacity-0"
+                    >
+                        <div 
+                            v-if="openProfile"
+                            ref="profilePanel"
+                            class="absolute right-0 top-full mt-2 w-56 origin-top-right rounded-md bg-white border border-gray-200 shadow-lg z-[60]"
+                            @click.stop
+                        >
+                            <div class="py-1">
+                                <a 
+                                    href="/" 
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                                    @click="openProfile = false"
+                                >
+                                    Home
+                                </a>
+                                
+                                <div class="border-t border-gray-200"></div>
+                                
+                                <button
+                                    @click="logout"
+                                    class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                                >
+                                    Sign out
+                                </button>
+                            </div>
+                        </div>
+                    </transition>
                 </div>
             </div>
         </div>
@@ -144,12 +186,26 @@ function toggleMobileSidebar() {
     overlay.classList.toggle('hidden')
 }
 
+// Notification state
 const openNotif = ref(false)
 const openMenuId = ref(null)       // <- เมนูย่อยของแต่ละรายการ
 const loading = ref(false)
 const bellBtn = ref(null)
 const notifPanel = ref(null)
 const notifications = ref([])
+
+// pichamon 
+// Profile states
+function toggleProfile() {
+    openProfile.value = !openProfile.value
+}
+
+const openProfile = ref(false)
+const profileBtn = ref(null)
+const profilePanel = ref(null)
+const { logout } = useAuth()
+
+//
 
 const unreadCount = computed(() => notifications.value.filter(n => !n.adminReviewedAt).length)
 
@@ -265,16 +321,29 @@ async function removeNotification(n) {
 
 /* ปิด dropdown เมื่อคลิกนอก */
 function onClickOutside(e) {
-    if (!openNotif.value) return
     const t = e.target
-    if (notifPanel.value?.contains(t) || bellBtn.value?.contains(t)) return
-    openNotif.value = false
-    openMenuId.value = null
+
+    //notidication dropdown
+    if (openNotif.value) {
+        if (notifPanel.value?.contains(t) || bellBtn.value?.contains(t)) return
+        openNotif.value = false
+        openMenuId.value = null
+        return
+    }
+
+    // profile dropdown
+    if (openProfile.value) {
+        if (profilePanel.value?.contains(t) || profileBtn.value?.contains(t)) return
+        openProfile.value = false
+    }
 }
+
 function onKey(e) {
     if (e.key === 'Escape') {
         openNotif.value = false
         openMenuId.value = null
+        //pichamon
+        openProfile.value = false
     }
 }
 
@@ -309,3 +378,5 @@ function timeAgo(ts) {
     overflow: hidden;
 }
 </style>
+
+
