@@ -61,6 +61,22 @@ services:
     depends_on:
       - backend
 
+  jenkins:
+      build: ./jenkins_setup
+      container_name: painamnae-jenkins
+      restart: always
+      user: root # ใช้ root เพื่อให้สั่ง docker ได้ง่ายๆ
+      ports:
+        - "8080:8080"   # เข้าเว็บ Jenkins
+        - "50000:50000"
+      volumes:
+        - jenkins_home:/var/jenkins_home
+        - /var/run/docker.sock:/var/run/docker.sock # หัวใจสำคัญ! ให้ Jenkins สั่ง Docker ตัวแม่ได้
+        #- /usr/bin/docker:/usr/bin/docker
+      depends_on:
+        - db
+
 # พื้นที่เก็บข้อมูลถาวรสำหรับ Database
 volumes:
   pgdata: 
+  jenkins_home:
