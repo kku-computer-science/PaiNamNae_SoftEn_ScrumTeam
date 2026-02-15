@@ -1,19 +1,19 @@
 version: '3.8'
 
 services:
-  # 1. กล่อง Database 
+  # 1. กล่อง Database
   db:
     image: postgres:15-alpine
     container_name: painamnae-db
     restart: always
     environment:
-      POSTGRES_USER: myuser
-      POSTGRES_PASSWORD: mypassword
-      POSTGRES_DB: painamnae_db
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "5432:5432" # เปิดให้เครื่องเรา (DBeaver/PgAdmin) เข้าไปดูข้อมูลได้
+      - "5432:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data # *สำคัญ* เก็บข้อมูลลง Harddisk (ลบ Container ข้อมูลไม่หาย)
+      - pgdata:/var/lib/postgresql/data
 
   # 2. กล่อง Backend
   backend:
@@ -23,25 +23,28 @@ services:
     ports:
       - "3000:3000"
     environment:
-      # --- ของเดิม ---
-      DATABASE_URL: "postgresql://myuser:mypassword@db:5432/painamnae_db?schema=public"
-      JWT_SECRET: "change_me_later"
-      PORT: 3000
-      # --- เพิ่มส่วนนี้ต่อท้าย (ต้องมีย่อหน้าเท่ากันกับข้างบน) ---
-      ADMIN_EMAIL: "admin@example.com"
-      ADMIN_USERNAME: "admin123"
-      ADMIN_PASSWORD: "password1234"
-      ADMIN_FIRST_NAME: "System"
-      ADMIN_LAST_NAME: "Administrator"
+      # สร้าง Connection String อัตโนมัติจากตัวแปรด้านบน
+      DATABASE_URL: "postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}?schema=public"
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: ${PORT}
+      
+      # Admin Info
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_USERNAME: ${ADMIN_USERNAME}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ADMIN_FIRST_NAME: ${ADMIN_FIRST_NAME}
+      ADMIN_LAST_NAME: ${ADMIN_LAST_NAME}
 
-      CLOUDINARY_CLOUD_NAME: "dyuxnerdb"
-      CLOUDINARY_API_KEY: "792285448287914"
-      CLOUDINARY_API_SECRET: "x9eb9HXVTVg7A6nfNIDHx-fsBwo"
+      # Cloudinary
+      CLOUDINARY_CLOUD_NAME: ${CLOUDINARY_CLOUD_NAME}
+      CLOUDINARY_API_KEY: ${CLOUDINARY_API_KEY}
+      CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET}
 
-      GOOGLE_MAPS_API_KEY: "AIzaSyA0_nkEKngbvQJ_K5uLrfVlHMC0WBWWRYI"
+      # Google Maps
+      GOOGLE_MAPS_API_KEY: ${GOOGLE_MAPS_API_KEY}
 
     depends_on:
-      - db # บอกให้รอ Database ตื่นก่อนค่อยทำงาน
+      - db
 
   # 3. กล่อง Frontend
   frontend:
@@ -49,15 +52,15 @@ services:
     container_name: painamnae-frontend
     restart: always
     ports:
-      - "3001:3000" # เข้าเว็บผ่าน http://localhost:3001 (ภายในกล่องมันรัน 3000)
+      - "3001:3000"
     environment:
-      NUXT_PUBLIC_API_BASE: "http://localhost:3000/api" # ชี้ไปหา Backend
-
-      NUXT_PUBLIC_GOOGLE_MAPS_API_KEY: "AIzaSyA0_nkEKngbvQJ_K5uLrfVlHMC0WBWWRYI"
+      NUXT_PUBLIC_API_BASE: ${NUXT_PUBLIC_API_BASE}
+      # ใช้ Key ตัวเดียวกับ Backend (ดึงจาก .env เหมือนกัน)
+      NUXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${GOOGLE_MAPS_API_KEY}
 
     depends_on:
       - backend
 
 # พื้นที่เก็บข้อมูลถาวรสำหรับ Database
 volumes:
-  pgdata:
+  pgdata: 
