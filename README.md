@@ -1,100 +1,3 @@
----
-
-## 🐳 Docker Guide & Troubleshooting (คู่มือการใช้งาน)
-
-โปรเจกต์นี้รันด้วย **Docker** 100% ไม่ต้องลง Node.js ในเครื่องก็รันได้ (ระบบจะใช้ Node v20 ให้เองอัตโนมัติ)
-
-### 🚀 1. เริ่มต้นใช้งาน (Quick Start)
-
-ก่อนรัน ตรวจสอบให้แน่ใจว่ามีไฟล์ >>>>>`.env`<<<<< อยู่ที่ Root Folder แล้ว
-
-```bash
-# สั่งรันระบบ (Build & Start)
-docker-compose up -d --build
-
-```
-
-> *รอสัก 1-2 นาที ให้ Backend สร้าง Database และ Admin ให้เสร็จก่อนเข้าใช้งาน*
-
----
-
-### 🎮 2. คำสั่งพื้นฐาน (Common Commands)
-
-| การกระทำ | คำสั่ง |
-| --- | --- |
-| **เปิดเซิร์ฟเวอร์** | `docker-compose up -d` |
-| **ปิดเซิร์ฟเวอร์** | `docker-compose down` |
-| **ดู Logs ทั้งหมด** | `docker-compose logs -f` |
-| **ดู Logs เฉพาะ Backend** | `docker logs -f painamnae-backend` |
-
----
-
-### 🛠️ 3. วิธีแก้ปัญหา (Troubleshooting) - **สำคัญ!**
-
-หากเจออาการเหล่านี้:
-
-* ❌ Login ไม่ได้ (User Admin หาย)
-* ❌ Database พัง / เชื่อมต่อไม่ได้
-* ⚪ หน้าเว็บขาว (White Screen)
-* 🔄 แก้โค้ดแล้วไม่เปลี่ยน
-
-**ให้ล้างระบบใหม่ (Factory Reset):**
-
-1. **ระเบิดถังข้อมูลทิ้ง** (ลบ Database และ Volumes เก่าที่ค้างค่าผิดๆ):
-```bash
-docker-compose down -v
-
-```
-
-
-2. **สร้างใหม่ทั้งหมด** (เริ่มระบบใหม่):
-```bash
-docker-compose up -d --build
-
-```
-
-
-3. **(ทางเลือก) ถ้า Admin ยังไม่มา**:
-```bash
-docker restart painamnae-backend
-
-```
-
-
-
----
-
-### 💻 4. คำสั่งขั้นสูง (Advanced)
-
-**เข้าไปในกล่อง Backend (Shell Access):**
-
-```bash
-docker exec -it painamnae-backend sh
-# พิมพ์ exit เพื่อออก
-
-```
-
-**สั่งอัปเดต Database (ถ้าแก้ schema.prisma):**
-
-```bash
-docker exec -it painamnae-backend npx prisma db push
-
-```
-
-**ดูข้อมูลใน DB ผ่าน Web (Prisma Studio):**
-
-```bash
-docker exec -it painamnae-backend npx prisma studio
-# เปิด Browser ไปที่ http://localhost:5555
-
-```
-**ปริ้นท์ตัวแปร Environment ทั้งหมดในกล่องออกมา:**
-
-```bash
-docker exec painamnae-backend printenv
-
-```
-
 # Pai Nam Nae - A Safe Ride Sharing App
 
 <!-- A safe ride-sharing application with a **Nuxt.js** frontend and **Express.js** backend, powered by **Prisma** ORM and **PostgreSQL**. -->
@@ -248,7 +151,7 @@ NUXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key_for_frontend
 
 ## API Endpoints
 
-Visit [**http://localhost:3000/documentation**](http://localhost:3000/documentation) for interactive Swagger UI and full API reference.
+Visit [**https://painamnaesoftenscrumteam-production.up.railway.app/documentation**](https://painamnaesoftenscrumteam-production.up.railway.app/documentation) for interactive Swagger UI and full API reference.
 
 ### Authentication
 
