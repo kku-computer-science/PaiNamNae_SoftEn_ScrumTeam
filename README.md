@@ -1,5 +1,17 @@
 # Pai Nam Nae - A Safe Ride Sharing App
 
+## ผู้ร่วมพัฒนาในวิชา CP353004 Software engineering
+
+| ชื่อ | รหัสนักศึกษา |
+|---|---|
+| เอมมิกา โยหา | 653380356-3 |
+| จุฬาราช คูณคำ | 663380378-4 |
+| พิชามญชุ์ พงศ์เศรษฐสันต์ | 663380395-4 |
+| กิตติกร เสวกวิหารี | 663380587-5 |
+| ศิววิทย์ ชุ่มนาเสียว | 663380402-3 |
+| บุณยศักดิ์ โพธิ์อ่อน | 663380604-1 |
+| ธงชัย สีสาร | 663380595-6 |
+
 <!-- A safe ride-sharing application with a **Nuxt.js** frontend and **Express.js** backend, powered by **Prisma** ORM and **PostgreSQL**. -->
 "Pai Nam Nae is a carpooling web application that connects drivers and passengers heading in the same direction, with a primary focus on safety and convenience. It is developed with a **Nuxt.js** frontend and an **Express.js**  backend, powered by the **Prisma** ORM and a **PostgreSQL** database."
 ## Table of Contents
