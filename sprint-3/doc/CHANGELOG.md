@@ -56,30 +56,32 @@
 ## [2026-03-18] - ปัจจุบัน
 
 ### pichamon395-4
-- **Chore:** เปลี่ยนชื่อไฟล์ (Rename) และปรับปรุงโครงสร้างไฟล์ภายในโปรเจกต์  
-- **Chore:** ปรับปรุง file path เพื่อให้สอดคล้องกับโครงสร้าง Sprint 3  
-- **Chore:** ลบไฟล์ที่ไม่จำเป็นออกจากระบบ  
-- **Chore:** ย้ายไฟล์ไปยังโฟลเดอร์ `sprint/sprint-3` และอัปเดต `.gitignore`  
-- **Chore:** ลบไฟล์ `.DS_Store` ออกจาก git tracking และเพิ่มเข้า `.gitignore`  
-- **Docs:** เพิ่มรายชื่อผู้ร่วมพัฒนาใน `README` และปรับโครงสร้างเอกสาร Sprint 3  
-- **Feat:** แก้ไข backend และเพิ่ม test cases สำหรับ Payment API  
-- **Merge:** รวม pull request #58, #59, #60 และ #61 เข้าสู่ branch `main`  
+- **Feat:** แก้ไข backend และเพิ่ม test cases สำหรับ Payment API
+- **Docs:** เพิ่มรายชื่อผู้ร่วมพัฒนาใน `README` และจัดโครงสร้าง Sprint 3
+- **Chore:** ลบ `.DS_Store` ออกจาก git tracking และเพิ่มลงใน `.gitignore`
+- **Chore:** ย้ายไฟล์ที่ค้างอยู่ใน `sprint/sprint-3` ไปที่ `sprint-3` และอัปเดต `.gitignore`
+- **Chore:** เพิ่ม test code และ test data สำหรับ Payment API (PBI-bonus)
+- **Chore:** เปลี่ยนชื่อไฟล์และ file path ให้สอดคล้องกับโครงสร้าง Sprint 3
+- **Chore:** ลบไฟล์และโฟลเดอร์ที่ไม่จำเป็นออกจากระบบ
 
-### Siwawit402-3 (Siwa-dev)
-- **Add:** เพิ่มรายงานผลการทดสอบ UAT test report สำหรับ PBI-16 เพื่อเตรียมพร้อมสำหรับการปิด Sprint  
-- **Fix:** ลบไฟล์ `UAT_Test_Report_ProductBacklogItem_16.pdf` ที่ซ้ำหรือไม่ถูกต้อง  
-- **Merge:** รวม branch `Siwawit402-3` เข้ากับ `main`  
+### Kittikorn587-5
+- **Feat:** สร้างโฟลเดอร์ `Product_Backlog_Items-bonus` พร้อมไฟล์ที่เกี่ยวข้อง
+- **Test:** ทดสอบการออกแบบ API สำหรับ PBI-16
+- **Docs:** เพิ่มไฟล์ `testReportAPI.pdf` สำหรับ PBI-16
 
-### Kittikorn587-5 (PersonZa)
-- **Feat:** สร้าง `Product_Backlog_Items-bonus`  
-- **Test:** ทดสอบการออกแบบ API สำหรับ PBI-16  
+### Siwawit402-3
+- **Add:** เพิ่มรายงานผลการทดสอบ UAT test report และ UAT test data สำหรับ PBI-16
+- **Fix:** ลบไฟล์ `UAT_Test_Report_ProductBacklogItem_16.pdf` และ `UAT_Test_Data_ProductBacklogItem_16.pdf` ที่ซ้ำหรือไม่ถูกต้อง
+
+### Ammika356-3
+- **Docs:** อัปโหลด ADAPT-blueprint สำหรับ PBI-16 และ PBI-bonus
+- **Chore:** เปลี่ยนชื่อไฟล์ ADAPT-blueprint ให้ระบุชื่อ PBI อย่างชัดเจน (เพิ่ม `(bonus)` ต่อท้าย)
+- **Chore:** ลบไฟล์ ADAPT-blueprint เก่าที่ไม่มีชื่อ PBI ออก
+
+### Bunyasak604-1
+- **Docs:** เพิ่มไฟล์ `CHANGELOG.md` และ `USER MANUAL.md` สำหรับ Sprint 3
+
+### Jularat387-4
+- **Docs:** อัปโหลดรูป sprint backlog สำหรับ Sprint 3
 
 ---
-
-## [2026-03-18] - Planned
-
-### [Planned]
-- สรุปผลการดำเนินงาน Sprint 3 (Sprint Review & Retrospective)  
-- จัดเตรียมเอกสารส่งมอบงาน (Final Report, UAT, API Documentation)  
-- ตรวจสอบความถูกต้องของไฟล์ทั้งหมดบน branch `main` ก่อนส่งงาน  
-- ตรวจสอบความสมบูรณ์ของระบบ (System Validation) รอบสุดท้าย  
