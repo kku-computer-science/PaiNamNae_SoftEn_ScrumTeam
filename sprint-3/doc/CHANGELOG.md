@@ -4,36 +4,10 @@
 
 ---
 
-## [2026-03-05]
-
-### Jularat387-4 (Prew-kku)
-- อัปโหลด Sprint Backlog สำหรับ Sprint 3 ลงในโฟลเดอร์ `sprint-backlog/`
-
-### pichamon395-4
-- เพิ่มไฟล์ `USERMANUAL.md` (PBI-16, PBI-bonus) และ `CHANGELOG.md`
-- อัปเดต API Testing collection ฉบับสมบูรณ์ (Complete API test collection)
-- **Fixed:** แก้ไขบั๊ก Modal ไม่ปิดและค้างหลังจาก Admin ปฏิเสธคำขอลบบัญชีในหน้า `admin/allrequests/index.vue`
-- เพิ่ม API testing สำหรับ PBI-bonus (Payment System)
-
-### Kittikorn587-5 (PersonZa)
-- ทดสอบ 90-day time machine API บน Production สำเร็จ
-- ปรับปรุง API paths และ Response structure ใน Postman collection
-- เพิ่ม Response logic สำหรับตรวจสอบ Deletion cron job ใน Postman collection
-
-### Jularat387-4 (Isaac-7262)
-- ย้าย Test report ไปยังโฟลเดอร์ `doc/` และเพิ่มเอกสาร UAT PDF
-- เปลี่ยนชื่อโฟลเดอร์รายงานผลการทดสอบ Sprint 2 ให้เป็นมาตรฐาน UAT
-
-### Siwawit402-3 (Siwa-dev)
-- เพิ่ม UAT Robot tests สำหรับ PBI-bonus และจัดทำเอกสารประกอบระบบการชำระเงินใน `test/Product_Backlog_Items-bonus/uat/`
-
----
-
 ## [2026-03-14]
 
-### Kittikorn587-5 (PersonZa)
-- **Feat:** พัฒนาระบบ Multi-step payment flow พร้อมระบบเลือกธนาคารแบบไดนามิก (Dynamic bank selection)
-- **Feat:** อัปเดตไฟล์ `docker-compose.yml` เพื่อรองรับการตั้งค่าระบบใหม่
+### Kittikorn587-5
+- **Feat:** พัฒนาระบบ Multi-step payment flow พร้อมระบบเลือกธนาคารแบบไดนามิก (Dynamic bank selection) และอัปเดตไฟล์ `docker-compose.yml`
 - **Chore:** Revert การเปลี่ยนแปลงที่ไม่ได้ตั้งใจในไฟล์ package และ `auth controller` เพื่อความเสถียรของระบบ
 
 ---
@@ -53,7 +27,7 @@
 
 ---
 
-## [2026-03-18] - ปัจจุบัน
+## [2026-03-18]
 
 ### pichamon395-4
 - **Feat:** แก้ไข backend และเพิ่ม test cases สำหรับ Payment API
@@ -63,11 +37,13 @@
 - **Chore:** เพิ่ม test code และ test data สำหรับ Payment API (PBI-bonus)
 - **Chore:** เปลี่ยนชื่อไฟล์และ file path ให้สอดคล้องกับโครงสร้าง Sprint 3
 - **Chore:** ลบไฟล์และโฟลเดอร์ที่ไม่จำเป็นออกจากระบบ
+- **Docs:** อัปเดต `USERMANUAL.md` และ `CHANGELOG.md`
 
 ### Kittikorn587-5
 - **Feat:** สร้างโฟลเดอร์ `Product_Backlog_Items-bonus` พร้อมไฟล์ที่เกี่ยวข้อง
 - **Test:** ทดสอบการออกแบบ API สำหรับ PBI-16
 - **Docs:** เพิ่มไฟล์ `testReportAPI.pdf` สำหรับ PBI-16
+- **Chore:** อัปเดตไฟล์และงานล่าสุดของ Sprint 3
 
 ### Siwawit402-3
 - **Add:** เพิ่มรายงานผลการทดสอบ UAT test report และ UAT test data สำหรับ PBI-16
@@ -83,5 +59,24 @@
 
 ### Jularat387-4
 - **Docs:** อัปโหลดรูป sprint backlog สำหรับ Sprint 3
+
+### Thongchai595-6
+- **Test:** เพิ่ม UAT Robot tests และเอกสารประกอบ
+
+---
+
+## [2026-03-19]
+
+### pichamon395-4
+- **Chore:** จัดโครงสร้างโฟลเดอร์ test ของ PBI-16 (`test data`, `test folder`)
+- **Add:** เพิ่ม test code สำหรับ PBI-16
+- **Chore:** เปลี่ยนชื่อไฟล์และลบ README ที่ไม่จำเป็นออก
+- **Docs:** อัปเดต `USERMANUAL.md` และ `CHANGELOG.md`
+
+### Kittikorn587-5
+- **Add:** เพิ่มไฟล์และอัปเดตงานล่าสุดของ Sprint 3
+
+### Siwawit402-3
+- **Docs:** เพิ่มไฟล์ UAT test design PDF สำหรับ PBI-16
 
 ---
